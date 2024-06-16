@@ -165,16 +165,15 @@ class AdminController extends Controller {
             $imagePath = $mahasiswa->image;
         }
 
-        $mahasiswa->name = $request->name;
-        $mahasiswa->email = $request->email;
-        if ($request->filled('password')) {
-            $mahasiswa->password = Hash::make($request->password);
-        }
-        $mahasiswa->no_telepon = $request->no_telepon;
-        $mahasiswa->nim = $request->nim;
-        $mahasiswa->image = $imagePath;
-        $mahasiswa->kelas_id = $request->kelas_id;
-        $mahasiswa->save();
+        $mahasiswa->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->filled('password') ? Hash::make($request->password) : $mahasiswa->password,
+            'no_telepon' => $request->no_telepon,
+            'image' => $imagePath,
+            'nim' => $request->nim,
+            'kelas_id' => $request->kelas_id,
+        ]);
 
         if ($request->has('matakuliah_ids')) {
             $matakuliahData = [];

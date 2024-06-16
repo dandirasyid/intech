@@ -84,7 +84,7 @@
                         </td>
                         <td class="align-middle">{{ $submission->nilai ?? 'Belum dinilai' }}</td>
                         <td class="align-middle">
-                            <form action="{{ route('nilai_submission', $submission->nilaiTugas_id) }}" method="POST">
+                            <form action="{{ route('nilai_submission', ['nilaiTugas_id' => $submission->id]) }}" method="POST">
                                 @csrf
                                 <input type="number" name="nilai" class="form-control" value="{{ $submission->nilai }}" required>
                                 <button type="submit" class="btn btn-primary mt-2">Submit</button>

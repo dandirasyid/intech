@@ -28,19 +28,9 @@
             <a href="{{ route('dosen_matakuliah') }}"><i class="bi bi-book"></i> <span class="link-text">Data Matakuliah</span></a>
             <a href="{{ route ('logout') }}"><i class="bi bi-box-arrow-left"></i> <span class="link-text">Logout</span></a>
             @elseif(auth()->user()->hasRole('mahasiswa'))
-            <a href=""><i class="bi bi-house"></i> <span class="link-text">Home</span></a>
-            <a href=""><i class="bi bi-book"></i> <span class="link-text">Data Matakuliah</span></a>
+            <a href="{{ route('mahasiswa') }}"><i class="bi bi-house"></i> <span class="link-text">Home</span></a>
+            <a href="{{ route('mahasiswa_matakuliah') }}"><i class="bi bi-book"></i> <span class="link-text">Data Matakuliah</span></a>
             <a href="{{ route ('logout') }}"><i class="bi bi-box-arrow-left"></i> <span class="link-text">Logout</span></a>
-            <div class="dropdown">
-                <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)">
-                    <i class="bi bi-list"></i> <span class="link-text">Dropdown</span>
-                </a>
-                <ul class="dropdown-menu" style="background-color: #10439f;">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                </ul>
-            </div>
             @endif
             @endauth
         </div>

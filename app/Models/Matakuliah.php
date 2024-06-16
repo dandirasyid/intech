@@ -32,4 +32,8 @@ class Matakuliah extends Model {
     public function users() {
         return $this->belongsToMany(User::class, 'mahasiswa_matakuliah', 'matakuliah_id', 'user_id')->withPivot('kelas_id');
     }
+
+    public function kelas() {
+        return $this->belongsToMany(Kelas::class, 'kelas_matakuliah', 'matakuliah_id', 'kelas_id');
+    }
 }

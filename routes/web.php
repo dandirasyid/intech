@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Mahasiswa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,12 +97,12 @@ Route::prefix('dosen')->middleware('authenticate', 'role:dosen')->group(function
         Route::get('/download/{materi_id}', [DosenController::class, 'downloadFile'])->name('download_file');
 
         Route::get('/detail/{matakuliah_id}/create-tugas', [DosenController::class, 'createTugas'])->name('create_tugas');
-        Route::post('/submission-tugas/nilai/{nilaiTugas_id}', [DosenController::class, 'nilaiSubmission'])->name('nilai_submission');
         Route::post('/detail/{matakuliah_id}/create-tugas/store', [DosenController::class, 'storeTugas'])->name('store_tugas');
         Route::get('/detail/{matakuliah_id}/edit-tugas/{tugas_id}', [DosenController::class, 'editTugas'])->name('edit_tugas');
         Route::put('/detail/{matakuliah_id}/update-tugas/{tugas_id}', [DosenController::class, 'updateTugas'])->name('update_tugas');
         Route::delete('/detail/{matakuliah_id}/delete-tugas/{tugas_id}', [DosenController::class, 'deleteTugas'])->name('delete_tugas');
         Route::get('/detail/{matakuliah_id}/tugas/{tugas_id}', [DosenController::class, 'detailTugas'])->name('detail_tugas');
+        Route::post('/submission-tugas/nilai/{nilaiTugas_id}', [DosenController::class, 'nilaiSubmission'])->name('nilai_submission');
         Route::get('/download-tugas/{tugas_id}', [DosenController::class, 'downloadTugas'])->name('download_tugas');
     });
 });
@@ -109,4 +110,18 @@ Route::prefix('dosen')->middleware('authenticate', 'role:dosen')->group(function
 // Mahasiswa
 Route::prefix('mahasiswa')->middleware('authenticate', 'role:mahasiswa')->group(function () {
     Route::get('/', [MahasiswaController::class, 'index'])->name('mahasiswa');
+    Route::get('/profile', [MahasiswaController::class, 'profile'])->name('profile');
+    Route::put('/profile/update', [MahasiswaController::class, 'profileUpdate'])->name('profile_update');
+
+    Route::prefix('matakuliah')->group(function () {
+        Route::get('/', [MahasiswaController::class, 'matakuliah'])->name('mahasiswa_matakuliah');
+        Route::get('/detail-matakuliah/{matakuliah_id}', [MahasiswaController::class, 'matakuliahDetail'])->name('mahasiswa_matakuliah.detail');
+        Route::get('/detail-matakuliah/{matakuliah_id}/materi/{id}', [MahasiswaController::class, 'detailMateri'])->name('detail_materi_mahasiswa');
+        Route::get('/mahasiswa-download-materi/{materi_id}', [MahasiswaController::class, 'downloadMateri'])->name('mahasiswa_download_materi');
+
+        Route::get('/detail-tugas/{matakuliah_id}/tugas/{tugas_id}', [MahasiswaController::class, 'detailTugas'])->name('detail_tugas_mahasiswa');
+        Route::get('/edit-tugas/{matakuliah_id}/tugas/{tugas_id}/submission/{submission_id}', [MahasiswaController::class, 'editTugas'])->name('edit_tugas_mahasiswa');
+        Route::put('/submit-tugas/{matakuliah_id}/tugas/{tugas_id}/submission/{submission_id}', [MahasiswaController::class, 'updateTugas'])->name('update_tugas_mahasiswa');
+        Route::post('/submit-tugas/{matakuliah_id}/tugas/{tugas_id}', [MahasiswaController::class, 'submitTugas'])->name('submit_tugas_mahasiswa');
+    });
 });
