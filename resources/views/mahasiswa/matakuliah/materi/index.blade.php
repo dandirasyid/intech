@@ -12,14 +12,16 @@
                     <div>
                         <img class="navbar-brand mt-2" src="{{ asset('images/intech.png') }}" alt="image-intech" width="150px">
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div class="mx-2 mt-3">
-                            <p class="fw-bold">{{ $user->name }}</p>
+                    <a href="{{ route('profile') }}" class="text-decoration-none text-dark">
+                        <div class="d-flex align-items-center">
+                            <div class="mx-2 mt-3">
+                                <p class="fw-bold">{{ $user->name }}</p>
+                            </div>
+                            <div>
+                                <img src="{{ asset('images/default_profile.png') }}" alt="user" class="rounded-circle" width="50px">
+                            </div>
                         </div>
-                        <div>
-                            <img src="{{ asset('images/default_profile.png') }}" alt="user" class="rounded-circle" width="50px">
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </nav>
         </header>
@@ -57,4 +59,5 @@
             </div>
         </div>
     </div>
-    @endsection
+</div>
+@endsection

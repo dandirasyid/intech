@@ -86,7 +86,6 @@
             <div class="col-md-12 mt-4 mb-5">
                 <div class="d-flex justify-content-start gap-3 mb-3">
                     <h5 class="fw-bold" style="color: #10439F;">Tugas</h5>
-                    <a href="{{ route('create_tugas', ['matakuliah_id' => $matakuliah->id]) }}" class="btn btn-sm btn-outline-success">Tambah</a>
                 </div>
                 <div>
                     <table class="table table-striped mt-3" id="datatable">

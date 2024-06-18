@@ -12,14 +12,16 @@
                     <div>
                         <img class="navbar-brand mt-2" src="{{ asset('images/intech.png') }}" alt="image-intech" width="150px">
                     </div>
-                    <div class="d-flex align-items-center">
-                        <div class="mx-2 mt-3">
-                            <p class="fw-bold">{{ $user->name }}</p>
+                    <a href="{{ route('profile') }}" class="text-decoration-none text-dark">
+                        <div class="d-flex align-items-center">
+                            <div class="mx-2 mt-3">
+                                <p class="fw-bold">{{ $user->name }}</p>
+                            </div>
+                            <div>
+                                <img src="{{ asset('images/default_profile.png') }}" alt="user" class="rounded-circle" width="50px">
+                            </div>
                         </div>
-                        <div>
-                            <img src="{{ asset('images/default_profile.png') }}" alt="user" class="rounded-circle" width="50px">
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </nav>
         </header>
@@ -59,7 +61,7 @@
         <div class="bg-body my-4 p-3 border-0 rounded shadow">
             <div class="d-flex gap-2 align-items-center">
                 <h4 style="color: #10439F;" class="fw-bold">Submit Tugas</h4>
-                <h6 class="fw-bold rounded text-white p-1" style="background-color: #10439F;">Nilai</h6>
+                <h6 class="fw-bold rounded p-1 text-white bg-success">{{ $tugassubmission->nilai ?? 'Belum dinilai' }}</h6>
             </div>
             <div class="col-md-12 d-flex justify-content-center gap-3 flex-wrap my-4">
                 <div class="card col-md-8 rounded p-3" style="border-color: #10439F;">

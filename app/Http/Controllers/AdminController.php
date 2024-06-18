@@ -551,6 +551,9 @@ class AdminController extends Controller {
 
     public function matakuliahDelete($matakuliah_id) {
         $matakuliah = Matakuliah::findOrFail($matakuliah_id);
+        if ($matakuliah->image) {
+            Storage::disk('public')->delete($matakuliah->image);
+        }
         $matakuliah->delete();
         return redirect()->route('admin_matakuliah', 'matakuliah')->with('success', 'Data berhasil dihapus.');
     }

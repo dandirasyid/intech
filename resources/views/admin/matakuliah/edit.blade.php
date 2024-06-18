@@ -69,7 +69,7 @@
                     @enderror
 
                     <div class="d-flex justify-content-end mt-3">
-                        <button type="submit" class="btn" style="background-color: #10439F; color: white; width: 100px;">Tambah</button>
+                        <button type="submit" class="btn" style="background-color: #10439F; color: white; width: 100px;">Edit</button>
                     </div>
                 </form>
             </div>

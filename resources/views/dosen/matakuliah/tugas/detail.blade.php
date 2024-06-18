@@ -77,7 +77,7 @@
                         <td class="align-middle">{{ $submission->jawaban }}</td>
                         <td class="align-middle">
                             @if ($submission->file_path)
-                            <a href="{{ Storage::url($submission->file_path) }}" target="_blank">Lihat File</a>
+                            <a href="{{ Storage::url($submission->file_path) }}" download target="_blank" class="text-decoration-none">Lihat File</a>
                             @else
                             <p class="text-muted">No file available</p>
                             @endif

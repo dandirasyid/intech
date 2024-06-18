@@ -13,7 +13,7 @@
         </header>
         <div class="col-md-12 d-flex align-items-center justify-content-between my-4">
             <section class="col-md-6">
-                <img src="{{ asset('images/registerAdmin.png') }}" alt="image-register" style="width: 450px; height: 350px;">
+                <img src="{{ asset('images/register-admin.png') }}" alt="image-register" style="width: 450px; height: 350px;">
             </section>
             <section class="col-md-6 card p-4 border-0 shadow bg-body" style="border-radius: 10px;">
                 @if (session('error'))
